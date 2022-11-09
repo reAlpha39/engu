@@ -58,10 +58,19 @@ class _HomeLayout extends StatelessWidget {
                         child: Container(
                           height: 50,
                           decoration: BoxDecoration(
-                            color: CustomColor.primaryColor,
+                            color: context.read<TabBarCubit>().currentIndex == 0
+                                ? CustomColor.primaryColor
+                                : CustomColor.secondaryBgColor,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: "Courses Chapter".text.bold.makeCentered(),
+                          child: "Courses Chapter"
+                              .text
+                              .bold
+                              .color(
+                                  context.read<TabBarCubit>().currentIndex == 1
+                                      ? CustomColor.primaryColor
+                                      : Colors.black)
+                              .makeCentered(),
                         ),
                       ).expand(),
                       const SizedBox(width: 16),
@@ -70,10 +79,19 @@ class _HomeLayout extends StatelessWidget {
                         child: Container(
                           height: 50,
                           decoration: BoxDecoration(
-                            color: CustomColor.primaryColor,
+                            color: context.read<TabBarCubit>().currentIndex == 1
+                                ? CustomColor.primaryColor
+                                : CustomColor.secondaryBgColor,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: "Quiz for English".text.bold.makeCentered(),
+                          child: "Quiz for English"
+                              .text
+                              .bold
+                              .color(
+                                  context.read<TabBarCubit>().currentIndex == 0
+                                      ? CustomColor.primaryColor
+                                      : Colors.black)
+                              .makeCentered(),
                         ),
                       ).expand(),
                     ],
