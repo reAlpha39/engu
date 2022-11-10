@@ -53,7 +53,7 @@ class CoursePage extends StatelessWidget {
                       )
                     ],
                   ).box.make(),
-                ).pOnly(top: 16, bottom: 8),
+                ).pOnly(top: 16, bottom: 16),
               ),
             )
           ],
