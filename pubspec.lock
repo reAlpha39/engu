@@ -170,7 +170,7 @@ packages:
     source: hosted
     version: "2.2.4"
   dartz:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: dartz
       url: "https://pub.dartlang.org"
