@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 final getIt = GetIt.instance;
 
 @injectableInit
-void configureDependencies() {
+void configureDependencies(String baseUrl) {
+  getIt.registerSingleton<String>(baseUrl, instanceName: 'baseUrl');
   $initGetIt(getIt);
 }

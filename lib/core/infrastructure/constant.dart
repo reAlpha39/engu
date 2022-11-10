@@ -5,3 +5,5 @@ class CustomColor {
   static const Color primaryBgColor = Color(0xFF323232);
   static const Color secondaryBgColor = Color(0xFF222222);
 }
+
+const String baseApi = 'https://englishunires.com/api/';

@@ -1,3 +1,4 @@
+import 'package:engu/core/infrastructure/constant.dart';
 import 'package:engu/core/infrastructure/theme.dart';
 import 'package:engu/injection.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'core/infrastructure/route.dart';
 
 void main() {
-  configureDependencies();
+  configureDependencies(baseApi);
   runApp(const MyApp());
 }
 
