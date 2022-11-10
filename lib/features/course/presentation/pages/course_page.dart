@@ -16,9 +16,47 @@ class CoursePage extends StatelessWidget {
       ),
       body: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 500),
-        child: ScrollConfiguration(
-          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
-          child: _CourseLayout(data),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ScrollConfiguration(
+              behavior:
+                  ScrollConfiguration.of(context).copyWith(scrollbars: false),
+              child: _CourseLayout(data),
+            ).expand(),
+            Container(
+              decoration: const BoxDecoration(
+                color: CustomColor.primaryColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                ),
+              ),
+              child: SafeArea(
+                bottom: true,
+                child: GestureDetector(
+                  onTap: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      'Record your Speech to test Pronunciation'
+                          .text
+                          .bold
+                          .size(18)
+                          .color(CustomColor.secondaryBgColor)
+                          .make(),
+                      const SizedBox(width: 8),
+                      const Icon(
+                        Icons.mic,
+                        color: CustomColor.secondaryBgColor,
+                        size: 24,
+                      )
+                    ],
+                  ).box.make(),
+                ).pOnly(top: 16, bottom: 8),
+              ),
+            )
+          ],
         ),
       ),
     );
