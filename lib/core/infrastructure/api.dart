@@ -12,7 +12,7 @@ class Api {
         connectTimeout: 5000,
         receiveTimeout: 3000,
         contentType: Headers.jsonContentType,
-        followRedirects: false,
+        followRedirects: true,
         validateStatus: (status) {
           return status! < 500;
         },
