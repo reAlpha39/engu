@@ -14,6 +14,7 @@ ThemeData theme() {
     scaffoldBackgroundColor: CustomColor.primaryBgColor,
     appBarTheme: const AppBarTheme(
       backgroundColor: CustomColor.primaryBgColor,
+      foregroundColor: CustomColor.primaryColor,
       elevation: 0,
     ),
   );
