@@ -1,4 +1,5 @@
 import 'package:engu/core/infrastructure/constant.dart';
+import 'package:engu/features/home/presentation/blocs/list_course/list_course_cubit.dart';
 import 'package:engu/features/home/presentation/blocs/tab_bar/tab_bar_cubit.dart';
 import 'package:engu/features/home/presentation/pages/courses_chapter_tab.dart';
 import 'package:engu/features/home/presentation/pages/quiz_for_english_tab.dart';
@@ -14,8 +15,15 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child: BlocProvider(
-        create: (context) => getIt<TabBarCubit>(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => getIt<TabBarCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => getIt<ListCourseCubit>()..getCourses(),
+          ),
+        ],
         child: Scaffold(
           appBar: AppBar(
             title: 'Engu'.text.color(CustomColor.primaryColor).make(),
