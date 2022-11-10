@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:engu/core/infrastructure/request_interceptor.dart';
 import 'package:engu/injection.dart';
@@ -18,6 +21,16 @@ class Api {
         },
       ),
     );
+
+    // add certificate callback
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
+
+    dio.httpClientAdapter;
 
     dio.interceptors.addAll({
       RequestInterceptor(dio),
