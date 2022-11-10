@@ -73,11 +73,12 @@ class _HomeLayout extends StatelessWidget {
                           ),
                           child: "Courses Chapter"
                               .text
-                              .bold
+                              .size(12)
+                              .semiBold
                               .color(
                                   context.read<TabBarCubit>().currentIndex == 1
                                       ? CustomColor.primaryColor
-                                      : Colors.black)
+                                      : Colors.white)
                               .makeCentered(),
                         ),
                       ).expand(),
@@ -94,11 +95,12 @@ class _HomeLayout extends StatelessWidget {
                           ),
                           child: "Quiz for English"
                               .text
-                              .bold
+                              .size(12)
+                              .semiBold
                               .color(
                                   context.read<TabBarCubit>().currentIndex == 0
                                       ? CustomColor.primaryColor
-                                      : Colors.black)
+                                      : Colors.white)
                               .makeCentered(),
                         ),
                       ).expand(),

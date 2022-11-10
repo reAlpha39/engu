@@ -25,29 +25,29 @@ class CardCourse extends StatelessWidget {
               children: [
                 data.name.text
                     .color(CustomColor.primaryColor)
-                    .size(18)
-                    .bold
+                    .size(12)
+                    .semiBold
                     .make(),
                 const SizedBox(height: 4),
-                data.description.text.white.make()
+                data.description.text.size(10).black.make()
               ],
             ).expand(),
             Container(
-              height: 50,
-              width: 50,
+              height: 35,
+              width: 35,
               decoration: const BoxDecoration(
                 color: CustomColor.primaryColor,
                 shape: BoxShape.circle,
               ),
               child: const Icon(
                 Icons.play_arrow,
-                color: Colors.black,
-                size: 30,
+                color: Colors.white,
+                size: 25,
               ),
             )
           ],
         ).p16(),
-      ).pOnly(bottom: 8),
+      ).pOnly(bottom: 12),
     );
   }
 }
