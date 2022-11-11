@@ -26,7 +26,12 @@ class HomePage extends StatelessWidget {
         ],
         child: Scaffold(
           appBar: AppBar(
-            title: 'Engu'.text.color(CustomColor.primaryColor).make(),
+            title: 'Engu Aplication'
+                .text
+                .color(CustomColor.primaryColor)
+                .size(14)
+                .bold
+                .make(),
           ),
           body: const _HomeLayout(),
         ),

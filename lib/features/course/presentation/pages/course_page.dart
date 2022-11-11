@@ -12,7 +12,12 @@ class CoursePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: 'Engu'.text.color(CustomColor.primaryColor).make(),
+        title: 'Engu Aplication'
+            .text
+            .color(CustomColor.primaryColor)
+            .size(14)
+            .bold
+            .make(),
       ),
       body: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 500),
@@ -42,7 +47,7 @@ class CoursePage extends StatelessWidget {
                       'Record your Speech to test Pronunciation'
                           .text
                           .bold
-                          .size(18)
+                          .size(12)
                           .color(CustomColor.secondaryBgColor)
                           .make(),
                       const SizedBox(width: 8),
@@ -91,11 +96,11 @@ class _CourseLayout extends StatelessWidget {
               children: [
                 data.name.text
                     .color(CustomColor.primaryColor)
-                    .size(24)
+                    .size(14)
                     .bold
                     .makeCentered(),
                 const SizedBox(height: 4),
-                data.description.text.white.makeCentered(),
+                data.description.text.size(12).black.makeCentered(),
               ],
             ).p12(),
           ),
