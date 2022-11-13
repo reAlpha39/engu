@@ -74,47 +74,36 @@ class _CourseLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NestedScrollView(
-      scrollDirection: Axis.vertical,
-      headerSliverBuilder: (context, innerBoxIsScrolled) => [
-        SliverToBoxAdapter(
-          child: ClipRRect(
+    return Column(
+      children: [
+        const SizedBox(height: 16),
+        Container(
+          decoration: BoxDecoration(
+            color: CustomColor.secondaryBgColor,
             borderRadius: BorderRadius.circular(10),
-            child: Image.asset('assets/images/course_banner.png'),
           ),
-        )
+          child: Column(
+            children: [
+              data.name.text
+                  .color(CustomColor.primaryColor)
+                  .size(14)
+                  .bold
+                  .makeCentered(),
+              const SizedBox(height: 4),
+              data.description.text.size(12).black.makeCentered(),
+            ],
+          ).p12(),
+        ),
+        const SizedBox(height: 16),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: WebView(
+            initialUrl: data.url,
+            javascriptMode: JavascriptMode.unrestricted,
+          ),
+        ).expand(),
+        const SizedBox(height: 16),
       ],
-      body: Column(
-        children: [
-          const SizedBox(height: 16),
-          Container(
-            decoration: BoxDecoration(
-              color: CustomColor.secondaryBgColor,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              children: [
-                data.name.text
-                    .color(CustomColor.primaryColor)
-                    .size(14)
-                    .bold
-                    .makeCentered(),
-                const SizedBox(height: 4),
-                data.description.text.size(12).black.makeCentered(),
-              ],
-            ).p12(),
-          ),
-          const SizedBox(height: 16),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: WebView(
-              initialUrl: data.url,
-              javascriptMode: JavascriptMode.unrestricted,
-            ),
-          ).expand(),
-          const SizedBox(height: 16),
-        ],
-      ),
     ).px16();
   }
 }
