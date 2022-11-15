@@ -1,6 +1,10 @@
 import 'package:engu/core/infrastructure/constant.dart';
+import 'package:engu/features/course/presentation/blocs/speech_test/speech_test_cubit.dart';
+import 'package:engu/features/course/presentation/widgets/speech_test_bottom_bar.dart';
 import 'package:engu/features/home/data/models/courses/courses.dart';
+import 'package:engu/injection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -10,58 +14,45 @@ class CoursePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: 'Engu Aplication'
-            .text
-            .color(CustomColor.primaryColor)
-            .size(14)
-            .bold
-            .make(),
-      ),
-      body: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 500),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            ScrollConfiguration(
-              behavior:
-                  ScrollConfiguration.of(context).copyWith(scrollbars: false),
-              child: _CourseLayout(data),
-            ).expand(),
-            Container(
-              decoration: const BoxDecoration(
-                color: CustomColor.primaryColor,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<SpeechTestCubit>(),
+        ),
+      ],
+      child: Scaffold(
+        appBar: AppBar(
+          title: 'Engu Aplication'
+              .text
+              .color(CustomColor.primaryColor)
+              .size(14)
+              .bold
+              .make(),
+        ),
+        body: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 500),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ScrollConfiguration(
+                behavior:
+                    ScrollConfiguration.of(context).copyWith(scrollbars: false),
+                child: _CourseLayout(data),
+              ).expand(),
+              Container(
+                decoration: const BoxDecoration(
+                  color: CustomColor.primaryColor,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                  ),
                 ),
-              ),
-              child: SafeArea(
-                bottom: true,
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      'Record your Speech to test Pronunciation'
-                          .text
-                          .bold
-                          .size(12)
-                          .color(CustomColor.secondaryBgColor)
-                          .make(),
-                      const SizedBox(width: 8),
-                      const Icon(
-                        Icons.mic,
-                        color: CustomColor.secondaryBgColor,
-                        size: 24,
-                      )
-                    ],
-                  ).box.make(),
-                ).pOnly(top: 16, bottom: 16),
-              ),
-            )
-          ],
+                child: SpeechTestBottomBar(
+                  speechTest: data.testSpeech,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
