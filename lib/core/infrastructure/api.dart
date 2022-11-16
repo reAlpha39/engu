@@ -12,8 +12,8 @@ class Api {
     var dio = Dio(
       BaseOptions(
         baseUrl: baseUrl,
-        connectTimeout: 5000,
-        receiveTimeout: 3000,
+        connectTimeout: 10000,
+        receiveTimeout: 8000,
         contentType: Headers.jsonContentType,
         followRedirects: true,
         validateStatus: (status) {
