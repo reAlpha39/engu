@@ -19,8 +19,8 @@ class QuizForEnglishTab extends StatelessWidget {
         initialUrl: 'https://englishunires.com/',
         javascriptMode: JavascriptMode.unrestricted,
         gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{}..add(
-            Factory<VerticalDragGestureRecognizer>(
-              () => VerticalDragGestureRecognizer(),
+            Factory<OneSequenceGestureRecognizer>(
+              () => EagerGestureRecognizer(),
             ),
           ),
       ),
