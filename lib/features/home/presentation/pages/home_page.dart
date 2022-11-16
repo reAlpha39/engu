@@ -56,7 +56,7 @@ class _HomeLayout extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.asset('assets/images/banner_speak_english.png'),
-              ),
+              ).px16(),
             )
           ],
           body: BlocBuilder<TabBarCubit, TabBarState>(
@@ -120,9 +120,9 @@ class _HomeLayout extends StatelessWidget {
                 ],
               );
             },
-          ),
+          ).px16(),
         ),
-      ).centered().px16(),
+      ).centered(),
     );
   }
 }
