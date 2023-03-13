@@ -1,6 +1,7 @@
 import 'package:engu/core/infrastructure/constant.dart';
 import 'package:engu/features/home/presentation/blocs/list_course/list_course_cubit.dart';
 import 'package:engu/features/home/presentation/blocs/tab_bar/tab_bar_cubit.dart';
+import 'package:engu/features/home/presentation/blocs/webview/webview_cubit.dart';
 import 'package:engu/features/home/presentation/pages/courses_chapter_tab.dart';
 import 'package:engu/features/home/presentation/pages/quiz_for_english_tab.dart';
 import 'package:engu/injection.dart';
@@ -19,6 +20,9 @@ class HomePage extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) => getIt<TabBarCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => getIt<WebviewCubit>(),
           ),
           BlocProvider(
             create: (context) => getIt<ListCourseCubit>()..getCourses(),
