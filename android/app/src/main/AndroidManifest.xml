@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
    <application
-        android:label="engu"
+        android:label="English Unires"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
