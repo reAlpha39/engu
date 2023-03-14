@@ -18,6 +18,7 @@ class QuizForEnglishTab extends StatelessWidget {
           child: WebView(
             initialUrl: 'https://englishunires.com/quiz-unires/',
             javascriptMode: JavascriptMode.unrestricted,
+            backgroundColor: Colors.white,
             onWebResourceError: (error) => ScaffoldMessenger(
               child: Text(error.description),
             ),
