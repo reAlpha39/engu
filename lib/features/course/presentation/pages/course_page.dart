@@ -8,6 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../blocs/webview_course/webview_course_cubit.dart';
+
 class CoursePage extends StatelessWidget {
   final Courses data;
   const CoursePage({super.key, required this.data});
@@ -18,6 +20,9 @@ class CoursePage extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => getIt<SpeechTestCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<WebviewCourseCubit>(),
         ),
       ],
       child: Scaffold(
@@ -88,9 +93,54 @@ class _CourseLayout extends StatelessWidget {
         const SizedBox(height: 16),
         ClipRRect(
           borderRadius: BorderRadius.circular(10),
-          child: WebView(
-            initialUrl: data.url,
-            javascriptMode: JavascriptMode.unrestricted,
+          child: Stack(
+            children: [
+              WebView(
+                initialUrl: data.url,
+                javascriptMode: JavascriptMode.unrestricted,
+                backgroundColor: Colors.white,
+                onWebResourceError: (error) => ScaffoldMessenger(
+                  child: Text(error.description),
+                ),
+                onProgress: (progress) => context
+                    .read<WebviewCourseCubit>()
+                    .updateProgress(progress.toDouble()),
+                onWebViewCreated: (controller) =>
+                    context.read<WebviewCourseCubit>().controller = controller,
+              ),
+              BlocBuilder<WebviewCourseCubit, WebviewCourseState>(
+                builder: (context, state) {
+                  return Visibility(
+                    visible:
+                        context.read<WebviewCourseCubit>().webViewProgress !=
+                            100.0,
+                    child: Center(
+                      child: Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              spreadRadius: 1,
+                              blurRadius: 3,
+                              offset: const Offset(0, 1),
+                            ),
+                          ],
+                        ),
+                        child: CircularProgressIndicator(
+                          value: context
+                                  .read<WebviewCourseCubit>()
+                                  .webViewProgress /
+                              100,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
         ).expand(),
         const SizedBox(height: 16),

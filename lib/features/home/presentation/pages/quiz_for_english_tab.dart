@@ -39,8 +39,23 @@ class QuizForEnglishTab extends StatelessWidget {
             return Visibility(
               visible: context.read<WebviewCubit>().webViewProgress != 100.0,
               child: Center(
-                child: CircularProgressIndicator(
-                  value: context.read<WebviewCubit>().webViewProgress / 100,
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        spreadRadius: 1,
+                        blurRadius: 3,
+                        offset: const Offset(0, 1),
+                      ),
+                    ],
+                  ),
+                  child: CircularProgressIndicator(
+                    value: context.read<WebviewCubit>().webViewProgress / 100,
+                  ),
                 ),
               ),
             );
